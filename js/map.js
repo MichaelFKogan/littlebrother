@@ -28,7 +28,7 @@ function initMap() {
             pos.lat = position.coords.latitude;
             pos.lng = position.coords.longitude;
 
-                database.ref('userInfo').push({
+                database.ref('userInfo').set({
                     positionLat: pos.lat,
                     positionLng: pos.lng
                 });
@@ -147,7 +147,7 @@ function initMapTwo() {
 } // End InitMap2() function 
 
 function geocodeLatLng(geocoder, map, infowindow) {
-  database.ref('userInfo').on("child_added", function(snapshot) {
+  database.ref('userInfo').on("value", function(snapshot) {
     
   
   var input = (snapshot.val().positionLat + "," + snapshot.val().positionLng)
@@ -158,7 +158,7 @@ function geocodeLatLng(geocoder, map, infowindow) {
     
     address = results[0].formatted_address;
 
-    database.ref('userInfo').push({
+    database.ref('userAddress').set({
     address: results[0].formatted_address
     });
 

@@ -80,17 +80,16 @@ $(document).ready(function() {
       //$('#total').show().text(formattedTime);
       clockedIn = false;
       //may need to be added to other people's code
-           		database.ref('userInfo').set({
-                 name: name,
-                 address: address,
-                 clockIn: formattedDate1,  
-                 clockOut: formattedDate2,
-                 totalTime: formattedTime,
-                 positionLat: pos.lat,
-                 positionLng: pos.lng
-                });
+           		// database.ref('userInfo').set({
+             //     name: name,
+             //     address: address,
+             //     clockIn: formattedDate1,  
+             //     clockOut: formattedDate2,
+             //     totalTime: formattedTime,
+             //     positionLat: pos.lat,
+             //     positionLng: pos.lng
+             //    });
 
-              database.ref('user').set({});
 
       } else {
         $('.message').html("You're not clocked in!");

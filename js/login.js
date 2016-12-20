@@ -14,7 +14,7 @@ o888o `Y8bod8P' `8oooooo.  o888o o888o o888o
 var provider = new firebase.auth.FacebookAuthProvider();
 var user;
 
-
+provider.addScope('public_profile');
 provider.addScope('email');
 
 //Authenticate with Firebase using the Facebook provider object.
@@ -22,38 +22,38 @@ function login(){
   //To sign in by redirecting to the sign-in page, call signInWithRedirect:
   //firebase.auth().signInWithRedirect(provider);
 
+
   // Sign in using a popup
   firebase.auth().signInWithPopup(provider).then(function(result) {
+
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     var token = result.credential.accessToken;
 
     // The signed-in user info
     user = result.user;
-    console.log(user);
 
-          // Save the User Name to Firebase
-  firebase.database().ref('user').set({
+    // Save the User Name to Firebase
+  database.ref('user').set({
     name: result.user.displayName
 });
 
-    // Redirect to the timer page
+        // Redirect to the timer page
+        console.log(".catch")
     window.location = "../timer.html";
-  }).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
   });
 }
+
+
+
+
+
 
 function logout(){
   firebase.auth().signOut().then(function() {
   // Sign-out successful
   // Redirect to the home page
+  
+
   window.location = "../index.html";
   }, function(error) {
     console.log(error.code);

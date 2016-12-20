@@ -1,10 +1,10 @@
 
 // Initialize Firebase
-var config = {
+  var config = {
     apiKey: "AIzaSyABtGUoDn3GvxXrfRA-bQKLrulCYCoHd_E",
     authDomain: "littlebrother-67da5.firebaseapp.com",
     databaseURL: "https://littlebrother-67da5.firebaseio.com",
-    storageBucket: "",
+    storageBucket: "littlebrother-67da5.appspot.com",
     messagingSenderId: "194837337033"
   };
   firebase.initializeApp(config);

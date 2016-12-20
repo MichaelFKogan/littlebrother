@@ -45,12 +45,19 @@
 	<center><button id="login" class="btn btn-primary btn-default"><span><img src="images/facebook-icon.svg" alt= "image" class="img-thumbnail" height="30" width="30"></span> Login</button></center>
 	<div id="experiment"></div>
 </div>
+<script src="https://code.jquery.com/jquery.js" type="text/javascript" ></script>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
 <script type="text/javascript">
+
+
 $('#quote').on('click', function(e) {
     e.preventDefault();
+    
     $.ajax( {
-      url: 'https://crossorigin.me/https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
+
+      url: 'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
+      
       success: function(data) {
         var post = data.shift(); // The data is an array of posts. Grab the first one.
         $('#quote-title').text(post.title);
@@ -66,13 +73,30 @@ $('#quote').on('click', function(e) {
       cache: false
     });
   });
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+<script src="js/main.js" type="text/javascript" ></script>
+<script>
+
+var database = firebase.database();
+
+    database.ref('user').set({
+    	name: ""
+	});
+
+    database.ref('userInfo').set({
+        positionLat: "",
+        positionLng: ""
+    });
+
+  	database.ref('userAddress').set({
+    	address: ""
+    });
 
 </script>
 
-<script src="https://code.jquery.com/jquery.js" type="text/javascript" ></script>
-<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-<script src="js/main.js" type="text/javascript" ></script>
 <!-- <script src="js/addUser.js" type="text/javascript" ></script> -->
 <script src="js/login.js" type="text/javascript" ></script>
 </body>
